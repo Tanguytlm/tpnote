@@ -38,14 +38,15 @@ public class TpnoteApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		DateFormat d = new SimpleDateFormat("dd/MM/yyyy");
-		
-		Person p2=new Person("Bob Morane");
-		personRepo.save(p2);
-		Person p1=new Person("Marine Lafeve");
+
+		Person p1=new Person("Marine Lafeve", "Marine", "Lafeve");
+
 		personRepo.save(p1);
 		noteRepo.save(new Notes("salut les gens !",p1));
 
-		
+		Person p2=new Person("Bob Morane", "Bob", "Morane");
+		personRepo.save(p2);
+
 		noteRepo.save(new Notes("aaaoo !",p2));
 		noteRepo.save(new Notes("aaaooezatzge!",p2));
 		
