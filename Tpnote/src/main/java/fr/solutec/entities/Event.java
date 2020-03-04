@@ -1,5 +1,8 @@
 package fr.solutec.entities;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +21,9 @@ public class Event {
 	private Date dateeEvent;
 	@CreationTimestamp
 	private Date date;
+
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -42,10 +48,13 @@ public class Event {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	
+
 	@Override
 	public String toString() {
 		return "Event [id=" + id + ", nom=" + nom + ", dateeEvent=" + dateeEvent + ", date=" + date + "]";
 	}
+	
 	public Event(String nom, Date dateeEvent) {
 		super();
 		this.nom = nom;
