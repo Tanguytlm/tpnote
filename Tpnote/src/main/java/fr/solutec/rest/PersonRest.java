@@ -1,7 +1,5 @@
 package fr.solutec.rest;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +33,11 @@ public class PersonRest {
 		}
 		
 		return pe;
+	}
+	
+	@RequestMapping(value = "/createperson", method = RequestMethod.POST)
+	public Person savePerson (@RequestBody Person p) {
+		return personRepo.save(p);
 	}
 			
 	
