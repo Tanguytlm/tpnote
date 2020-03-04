@@ -20,21 +20,27 @@ import fr.solutec.entities.Person;
 public class ParticipationRest {
 	@Autowired
 	private ParticipationRepository participationRepo;
-	
+
 	@RequestMapping(value = "/participation/event/{id}", method = RequestMethod.GET)
-	public List<Participation> getAllPersonEvent(@PathVariable Long id){
-		return participationRepo.findByEventId(id);
+	public List<Participation> getAllPersonEvent(@PathVariable Long id) {
+		return setMdpPerson(participationRepo.findByEventId(id));
 	}
-	
+
 	@RequestMapping(value = "/participation/person/{id}", method = RequestMethod.GET)
-	public List<Participation> getAllEventPerson(@PathVariable Long id){
-		return participationRepo.findByPersonId(id);
+	public List<Participation> getAllEventPerson(@PathVariable Long id) {
+
+		return setMdpPerson(participationRepo.findByPersonId(id));
 	}
-	
+
 	@RequestMapping(value = "/participation", method = RequestMethod.GET)
-	public List<Participation> getAll(){
+	public List<Participation> getAll() {
 		return (List<Participation>) participationRepo.findAll();
 	}
-	
-	
+
+	private List<Participation> setMdpPerson(List<Participation> p) {
+		for (Participation participation : p) {
+			participation.getPerson().setMdp("");
+		}
+		return p;
+	}
 }
